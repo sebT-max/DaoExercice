@@ -2,6 +2,8 @@ package com.example.jdbci;
 
 import com.example.jdbci.models.Address;
 import com.example.jdbci.models.User;
+import com.example.jdbci.models.Emprunt;
+import com.example.jdbci.models.Livre;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,9 +11,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnectionFactory {
-    private static final String URL = "jdbc:postgresql://localhost:5432/training_jdbc";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "root";
+    private static final String URL = "jdbc:postgresql://localhost:5432/technofuturtic_firstdb";
+    private static final String USER = "sebt-max";
+    private static final String PASSWORD = "";
 
     public static Connection connection() throws SQLException {
         return DriverManager.getConnection(URL,USER,PASSWORD);
@@ -31,6 +33,9 @@ public class ConnectionFactory {
             // création des tables
             statement.executeUpdate(User.queryCreateTable());
             statement.executeUpdate(Address.queryCreateTable());
+            statement.executeUpdate(Emprunt.queryCreateTable());
+            statement.executeUpdate(Livre.queryCreateTable());
+
             System.out.println("Tables créées avec succès");
 
         }catch(SQLException error){
